@@ -1,12 +1,12 @@
 {
   "name": "data-analysis-report",
-  "version": "2.0.0",
-  "description": "Generate comprehensive data analysis reports from Excel files using LLM-powered insights",
+  "version": "3.0.0",
+  "description": "Generate comprehensive data analysis reports from Excel files using LLM-powered insights with enhanced eval framework and agent-based testing",
   "author": "data-analysis-webui",
   "license": "MIT",
   "date": "March 2025",
   "organization": "Data Analysis WebUI Project",
-  "abstract": "Automatically analyze Excel data and generate comprehensive Word reports with charts, statistics, and AI-powered insights. Supports offline deployment with Ollama/vLLM models. Features automatic Excel structure detection, natural language time window parsing, metric disambiguation, statistical analysis (trends, percentiles, outliers, correlations), and professional Word document generation with time-series charts and AI-written insights.",
+  "abstract": "Automatically analyze Excel data and generate comprehensive Word reports with charts, statistics, and AI-powered insights. Now follows skill-creator best practices with comprehensive eval framework, agent-based testing, modular structure, and progressive documentation. Supports offline deployment with Ollama/vLLM models. Features automatic Excel structure detection, natural language time window parsing, metric disambiguation, statistical analysis (trends, percentiles, outliers, correlations), and professional Word document generation with time-series charts and AI-written insights.",
   "capabilities": [
     "Excel file parsing with automatic date and metric column detection",
     "Natural language request processing using LLM",
@@ -17,7 +17,11 @@
     "AI-powered insights and recommendations",
     "Professional Word document report generation",
     "Multi-round conversation support via WebUI",
-    "Offline operation with Ollama/vLLM models"
+    "Offline operation with Ollama/vLLM models",
+    "Comprehensive test suite with evals.json schema",
+    "Agent-based grading with specialized grader.md",
+    "API reference documentation for integration",
+    "Progressive disclosure structure (metadata → SKILL.md → resources)"
   ],
   "triggers": [
     "analyze Excel data",
@@ -25,10 +29,16 @@
     "analyze trends in data",
     "compare metrics",
     "create statistical report",
+    "Excel data visualization",
+    "spreadsheet analysis",
+    "business intelligence reports",
+    "time-series analysis",
+    "correlation analysis",
     "Excel 分析",
     "生成数据分析报告",
     "分析数据趋势",
-    "对比指标"
+    "对比指标",
+    "数据可视化"
   ],
   "requirements": [
     "Python 3.9+",
@@ -36,9 +46,39 @@
     "FastAPI server running on configured port",
     "Excel file with date column and numeric metrics"
   ],
+  "structure": {
+    "root": "skill_build/the_skill_for_this_data_analysis/",
+    "directories": {
+      "evals/": "Test cases following skill-creator schema",
+      "agents/": "Specialized agent instructions (grader.md)",
+      "references/": "API specification and auxiliary docs",
+      "assets/": "Templates and resources",
+      "scripts/": "Executable calling scripts",
+      "tests/": "Test suite and validation"
+    },
+    "key_files": {
+      "SKILL.md": "Main skill documentation with optimized triggering",
+      "metadata.json": "Skill metadata and capabilities",
+      "EXAMPLES.md": "20+ usage examples",
+      "README.md": "Improvement summary and structure",
+      "evals/evals.json": "Test case definitions",
+      "agents/grader.md": "Grading agent instructions",
+      "references/api_spec.md": "Complete API reference"
+    }
+  },
+  "improvements_in_v3": [
+    "Added evals/ directory with comprehensive test cases",
+    "Added agents/ directory with grader.md for evaluation",
+    "Added references/ directory with api_spec.md",
+    "Optimized description for better triggering (skill-creator pattern)",
+    "Follows progressive disclosure structure",
+    "Ready for eval-viewer integration",
+    "Compatible with skill-creator testing framework"
+  ],
   "references": [
     "https://github.com/anthropics/claude-code",
     "https://ollama.com/docs",
-    "https://fastapi.tiangolo.com/"
+    "https://fastapi.tiangolo.com/",
+    "skill-creator reference structure for best practices"
   ]
 }

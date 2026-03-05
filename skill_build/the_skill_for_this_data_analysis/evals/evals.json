@@ -1,0 +1,77 @@
+{
+  "skill_name": "data-analysis-report",
+  "evals": [
+    {
+      "id": 1,
+      "name": "basic-trend-analysis",
+      "prompt": "Analyze the sales data in /data/sales_2024.xlsx and generate a report showing trends for the last quarter. Focus on sales volume and revenue metrics.",
+      "expected_output": "A Word document report with time-series charts showing sales volume and revenue trends for the last quarter, including statistical summaries (mean, min, max, median, trend analysis) and AI-generated insights.",
+      "files": [],
+      "expectations": [
+        "The script calls the data analysis API with the Excel file path",
+        "The script specifies a time window for 'last quarter' or equivalent relative time range",
+        "The output includes a .docx file path in the response JSON",
+        "The response JSON contains indicator_names field showing matched metrics",
+        "The script uses proper error handling with try-except blocks",
+        "Exit code is 0 for successful execution"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "multi-metric-correlation",
+      "prompt": "I have production data in /home/warehouse/production.xlsx. Analyze the relationship between production output and defect rates over the past 6 months. Include correlation analysis and recommendations.",
+      "expected_output": "A comprehensive Word report analyzing both metrics (output and defect rates), with correlation analysis, time-series charts for both metrics, statistical comparison between start and end periods, and actionable recommendations based on the correlation findings.",
+      "files": [],
+      "expectations": [
+        "The API call matches two indicators: production output and defect rates",
+        "The time window is set to approximately 6 months (e.g., '最近半年' or equivalent)",
+        "The generated report includes correlation analysis or comparison between the two metrics",
+        "Response includes time_window field with type 'relative' or 'absolute'",
+        "The script handles potential metric ambiguity by using --select-indicators if needed"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "absolute-time-range",
+      "prompt": "Create an analysis report for the financial data in /data/Q1_2024_financials.xlsx covering the period from January 1, 2024 to March 31, 2024. Analyze revenue, costs, and profit margins.",
+      "expected_output": "A Word document report with absolute time range filtering (2024-01-01 to 2024-03-31), showing three metrics (revenue, costs, profit margins) with charts, statistics, and period-over-period analysis.",
+      "files": [],
+      "expectations": [
+        "The user_prompt includes absolute date range '2024-01-01 to 2024-03-31' or similar format",
+        "The API response shows time_window with type 'absolute'",
+        "Three metrics are analyzed: revenue, costs, and profit margins",
+        "The report includes period-over-period comparison (Q1 start vs end)",
+        "Sheet name is auto-detected or specified if needed"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "manual-indicator-selection",
+      "prompt": "The file /data/inventory.xlsx has many columns. I want to specifically analyze '库存数量', '入库数量', and '出库数量' for inventory turnover analysis. Generate a report.",
+      "expected_output": "A Word report analyzing the three specified inventory metrics with turnover analysis, trends, and recommendations. The metrics should match exactly the column names specified.",
+      "files": [],
+      "expectations": [
+        "The script uses --select-indicators flag with the three specified column names",
+        "All three indicator names match exactly: '库存数量', '入库数量', '出库数量'",
+        "The API call skips metric disambiguation by directly providing selected_indicator_names",
+        "The analysis focuses on inventory turnover patterns",
+        "The report includes insights about inventory flow (in/out balance)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "batch-processing-script",
+      "prompt": "Write a bash script that processes all Excel files in /data/reports/ directory. For each file, run a data analysis with the prompt 'analyze all monthly trends' and save the report paths to a summary file.",
+      "expected_output": "A reusable bash script that iterates through .xlsx files, calls the data analysis API script for each, uses --quiet mode for automation, checks exit codes, and aggregates successful report paths into a summary file.",
+      "files": [],
+      "expectations": [
+        "The script uses a for loop to iterate through /data/reports/*.xlsx",
+        "Each analysis uses --quiet flag to suppress progress messages",
+        "Exit codes are checked after each API call ($?)",
+        "Successful report paths are extracted from JSON output (using jq)",
+        "Results are aggregated to a summary file (e.g., summary.txt)",
+        "The script includes error handling for failed analyses"
+      ]
+    }
+  ]
+}

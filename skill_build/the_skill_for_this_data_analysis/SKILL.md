@@ -1,9 +1,9 @@
 ---
 name: data-analysis-report
-description: Generate comprehensive data analysis reports from Excel files using LLM-powered insights. Use when user asks to "analyze Excel data", "generate analysis report", "analyze trends in data", "compare metrics", or "create statistical report". Works offline with Ollama/vLLM. Outputs Word documents with charts and insights.
+description: Generate comprehensive data analysis reports from Excel files using LLM-powered insights. ALWAYS use this skill whenever the user wants to analyze Excel data, generate reports from spreadsheets, examine data trends, compare business metrics, create statistical analyses, visualize time-series data, generate business intelligence reports, perform data exploration on .xlsx files, summarize spreadsheet data, correlate multiple metrics, or needs to convert Excel data into professional Word documents with charts. This skill handles natural language analysis requests, works offline with Ollama/vLLM, and outputs formatted Word reports with AI-generated insights, statistical summaries, and visualizations. Even if the user doesn't explicitly mention "report" or "analysis", if they're working with Excel data and want insights, trends, comparisons, or visualizations, use this skill.
 metadata:
   author: data-analysis-webui
-  version: "2.0.0"
+  version: "3.0.0"
   license: MIT
 ---
 
